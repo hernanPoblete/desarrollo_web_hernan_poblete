@@ -1,0 +1,21 @@
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
+/*Paleta generada aleatoriamente por medio de página web*/
+
+:root {
+	--var-palette-dark-1: #331e36;
+	--var-palette-dark-2: #41337A;
+	--var-palette-dark-3: #6EA4BF;
+	--var-palette-light-1: #C2EFEB;
+	--var-palette-light-2: #ECFEE8;
+}
