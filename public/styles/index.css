@@ -3,6 +3,9 @@
 	margin: 0;
 	text-decoration: none;
 	list-style: none;
+
+	font-family: Arial, Helvetica, sans-serif;
+	color: #0f0f0f;
 }
 
 body {
@@ -18,4 +21,37 @@ body {
 	--var-palette-dark-3: #6EA4BF;
 	--var-palette-light-1: #C2EFEB;
 	--var-palette-light-2: #ECFEE8;
+}
+
+
+label.required::after{
+	content: " *";
+	color: red
+}
+
+
+/*Ayudas para trabajar con flexbox*/
+
+.flex-col-25{
+	flex: 3;
+}
+
+.flex-col-30{
+	flex:4
+}
+
+.flex-col-50{
+	flex:6;
+}
+
+.flex-col-60{
+	flex:8
+}
+
+.flex-col-75{
+	flex:9;
+}
+
+.flex-col-100{
+	flex:12;
 }

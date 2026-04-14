@@ -1,0 +1,66 @@
+form#mainForm{
+	width: 60%;
+	min-height: 80%;
+
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%,-50%);
+
+	border: solid 2px black;
+	border-radius: 10px;
+}
+
+
+/* Reajusta los límites de pantalla debajo de los 700 px (Cuando se empieza a ver feo en celular)*/
+
+@media only screen and (max-width: 700px) {
+	form#mainForm {
+		width: 90%;
+	}
+}
+
+.form-title{
+	padding: 10px;
+	text-align: justify;
+}
+
+
+
+form#mainForm > .form-content{
+	padding:10px;
+}
+
+form#mainForm > .form-content .form-row{
+	width: 100%;
+	margin: 10px 0 10px 0;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+form#mainForm > .form-content >section{
+	margin: 10px;
+}
+
+form#mainForm > .form-content .form-row > .form-object {
+	display: block;
+	margin: 5px;
+	flex-basis: 10em;
+}
+
+form#mainForm > .form-content .form-row > .form-object > label {
+	display: block;
+}
+
+form#mainForm > .form-content .form-row > .form-object > .input {
+	width: 100%;
+	height: 32px
+}
+
+input.err {
+	border: solid red 1px;
+}
