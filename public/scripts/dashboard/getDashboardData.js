@@ -157,7 +157,7 @@ let actividades = [
 		'ir al gimnasio', 
 		'deportiva',
 		[["10:00", "11:00"],[],["10:00", "11:00"],["10:00", "11:00"],[],[],[]],
-		["https://thumbs.dreamstime.com/z/mirada-del-gato-con-dos-pesas-de-gimnasia-40661121.jpg"],
+		["https://thumbs.dreamstime.com/z/mirada-del-gato-con-dos-pesas-de-gimnasia-40661121.jpg", "https://i.pinimg.com/736x/73/86/35/7386355e526a9c512aa3841a54cec2a5.jpg"],
 		["https://www.gimnasios.cl/cadenas/pacific-fitness/"]
 	),
 
