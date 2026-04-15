@@ -1,0 +1,32 @@
+
+
+body > section {
+	margin: 20px;
+	border: solid black 1px;
+	border-radius: 5px;
+}
+
+#othersInfo {
+	max-height: 70%;
+	overflow-y: scroll;
+
+}
+
+#othersInfo .flex {
+	justify-items: flex-start;
+	margin: 10px;
+}
+
+#othersInfo a {
+	color:blue;
+}
+
+#othersInfo img {
+	aspect-ratio: 1/1;
+	width: 150px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	border: solid black 2px;
+}

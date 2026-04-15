@@ -32,6 +32,10 @@ label.required::after{
 
 /*Ayudas para trabajar con flexbox*/
 
+.flex {
+	display: flex;
+}
+
 .flex-col-25{
 	flex: 3;
 }
