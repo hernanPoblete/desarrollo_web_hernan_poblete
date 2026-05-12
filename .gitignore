@@ -1,1 +1,6 @@
 **/**/__pycache__
+
+**/**.sqlite
+
+**/**.env
+!**/**.example.env
