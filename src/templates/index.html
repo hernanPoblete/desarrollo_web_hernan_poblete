@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Formulario de Actividades Extracurriculares</title>
+{% extends "layout/template.html" %}
+
+{% block title %}
+	Formulario de Actividades Extracurriculares
+{% endblock %}
+
+{%block headinfo%}
+	{{super()}}
+	<link rel="stylesheet" href="static/styles/mainForm.css">
+{%endblock%}
 
 
-	<link rel="stylesheet" href="../styles/index.css">
-	<link rel="stylesheet" href="../styles/mainForm.css">
-</head>
-<body>
-	<form action="./dashboard.html" method="get" id="mainForm">
+{%block body%}
+<form action="./dashboard.html" method="get" id="mainForm">
 		<h1 class="form-title">Formulario de Actividades de Distención en la Facultad</h1>
 		
 		<div class="form-content">
@@ -76,8 +77,7 @@
 	
 
 
-	<script src="../scripts/formValidators/validateRut.js"></script>
-	<script src="../scripts/formValidators/handleRequirements.js"></script>
-	<script src="../scripts/formValidators/validateMail.js"></script>
-</body>
-</html>
+	<script src="static/scripts/formValidators/validateRut.js"></script>
+	<script src="static/scripts/formValidators/handleRequirements.js"></script>
+	<script src="static/scripts/formValidators/validateMail.js"></script>
+{%endblock%}
