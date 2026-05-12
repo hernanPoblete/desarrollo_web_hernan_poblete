@@ -1,0 +1,6 @@
+{
+	"watch": ["src"],
+	"ignore": ["src/public"],
+	"ext": "py,json,env",
+	"exec": "find \"src/\" -type f -path \"*/__pycache__/*\" -delete && python src/app.py"
+}
