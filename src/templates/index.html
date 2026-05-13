@@ -18,5 +18,16 @@
 			<li><a href="/members">Ver miembros</a></li>
 			<li><a href="#">Estadísticas</a></li>
 		</ul>
+
+		<h1>Últimos Miembros</h1>
+		<ul id="userList">
+			{%for i in members%}
+				<li onclick="displayUser({{i['id']}})" class = "user">{{i["nombre"]}}</li>
+			{%endfor%}
+
+		</ul>
 	</main>
+
+	<script src="/static/scripts/dashboard/fetchUsers.js"></script>
+
 {%endblock%}

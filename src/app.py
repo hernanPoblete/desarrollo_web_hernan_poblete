@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, request, redirect
+from flask import Flask, url_for, render_template, request, redirect, jsonify
 import pathlib
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
@@ -77,6 +77,12 @@ def members(page):
 	
 	return render_template("dashboard.html", members = fetch_latest_members(users_per_page, (page-1)*users_per_page), page=page, max_page=pages)
 
+
+@app.route("/api/user", methods=["GET", "POST"])
+def fetch_user():
+	return jsonify({
+		"foo": "bar"
+	})
 if __name__ == '__main__':
 
 	

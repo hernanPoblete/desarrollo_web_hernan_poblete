@@ -45,3 +45,7 @@ body > section {
 	display: flex;
 	margin: 10px
 }
+
+.user:hover{
+	color:blue
+}
