@@ -1,72 +1,38 @@
 {% extends "layout/template.html" %}
 
 {% block title %}
-	Aqui ira el nombre
+	Miembros
 {% endblock %}
 
 {%block headinfo%}
 	{{super()}}
-	<link rel="stylesheet" href="static/styles/dashboard.css">
+	<link rel="stylesheet" href="/static/styles/dashboard.css">
 {%endblock%}
 
 
 {%block body%}
-<h1 style="margin: 20px;">Placeholder de Nombre</h1>
-
-	<section id="myActivities">
-		<h2>Mis Actividades</h2>
-		<ul id="activityList">
-			<li>
-				Nombre Actividad
-				<br>
-				Tipo: Tipo Actividad
-				<br>
-				Horarios:
-
-				<ul>
-					<li>Lunes 8:00 - 10:00</li>
-					<li>Martes 9:30 - 12:45 </li>
-				</ul>
-			</li>
-		</ul>
-	</section>
 
 	<section id="othersInfo">
-		<h2>Otros Usuarios</h2>
+		<h1>Información de Miembros y Actividades</h1>
 
-		<h3>Filtros</h3>
-
-		<div class="filtros">
-
-			<label for="typeFilter">Tipo de Usuario</label>
-			<select id="typeFilter">
-				<option value="0">Seleccionar</option>
-				<option value="1">Estudiante de Pregrado</option>
-				<option value="2">Estudiante de Postgrado</option>
-				<option value="3">Academico</option>
-				<option value="4">Funcionario</option>
-			</select>
-			
-
-			<label for="activityFilter"> Tipo de Actividad</label>
-			<select id="activityFilter">
-				<option value="0">Seleccionar</option>
-				<option value="1">Artistica</option>
-				<option value="2">Deportiva</option>
-				<option value="3">Tecnológica</option>
-				<option value="4">Social</option>
-				<option value="5">Recreativa</option>
-			</select>
-
-			<input type="text" id="usernameFilter" placeholder="Buscar por nombre">
-		</div>
 
 		<ul id="userList">
-
+			{%for i in members%}
+				<li onclick="displayUser({{i['id']}})" class = "user">{{i["nombre"]}}</li>
+			{%endfor%}
 
 		</ul>
 
+		<nav>
+			<ul class="pagination justify-content-center">
+				<li class="page-item {%if page==1%}{{'disabled'}}{%endif%}" ><a class= "page-link" href="/members/{{page-1}}">Anterior</a></li>
+				<li class="page-item {%if page==max_page%}{{'disabled'}}{%endif%}"><a class= "page-link"  href="/members/{{page+1}}">Siguiente</a></li>
+			</ul>	
+		</nav>
+
+
+
 	</section>
-	<script src="static/scripts/dashboard/getDashboardData.js"></script>
-	<script src="static/scripts/dashboard/handleSearch.js"></script>
+	<script src="/static/scripts/fetchUsers.js"></script>
+	<script src="/static/scripts/dashboard/handleSearch.js"></script>
 {%endblock%}

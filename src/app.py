@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
-
+from math import ceil
 
 if pathlib.Path('.env').exists:
 	load_dotenv('.env')
@@ -27,6 +27,9 @@ foto=db.Table('foto', db.metadata, autoload_with=db.engine)
 
 def fetch_latest_members(n, offset=0):
 	return db.session.query(miembro).order_by('fecha_registro').offset(offset).limit(n)
+
+def members_length():
+	return db.session.query(miembro).count()
 
 def register_member(data):
 	print(data.get('rut'))
@@ -64,9 +67,15 @@ def register():
 		return redirect('/members')
 	
 
-@app.route("/members", methods=["GET"])
-def members():
-	return render_template("dashboard.html")
+@app.route("/members/<int:page>", methods=["GET"])
+def members(page):
+	users_per_page = 10
+	pages = ceil(members_length()/users_per_page)
+
+	if(page>pages and members_length!=0):
+		return redirect("/members/1")
+	
+	return render_template("dashboard.html", members = fetch_latest_members(users_per_page, (page-1)*users_per_page), page=page, max_page=pages)
 
 if __name__ == '__main__':
 
