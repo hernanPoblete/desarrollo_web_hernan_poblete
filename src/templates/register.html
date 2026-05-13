@@ -1,0 +1,83 @@
+{% extends "layout/template.html" %}
+
+{% block title %}
+	Formulario de Actividades Extracurriculares
+{% endblock %}
+
+{%block headinfo%}
+	{{super()}}
+	<link rel="stylesheet" href="static/styles/mainForm.css">
+{%endblock%}
+
+
+{%block body%}
+<form action="/register" method="post" id="mainForm">
+		<h1 class="form-title">Formulario de Actividades de Distención en la Facultad</h1>
+		
+		<div class="form-content">
+			<section>
+				<h2>Datos Personales</h2>
+				<div class="form-row">
+					<div class="form-object flex-col-50">
+						<label for="name" class = "required">Nombre</label>						
+						<input type="text" class="input" name="nombre" id="name" placeholder="Nombre" required>
+					</div>
+
+
+					<div class="form-object flex-col-25">
+						<label for="rut" class = "required">Rut</label>
+						<input type="text" name="rut" class="input"  id="rut" placeholder="Rut" required>
+					</div>
+
+					<div class="form-object flex-col-25">
+						<label for="ocupacion" class="required">Ocupación</label>
+						<select name="ocupacion" class="input" id="ocupacion" required>
+							<option value="" id="ocupacion_default">Seleccionar Una Opción...</option>
+							<option value="academico">Académico</option>
+							<option value="estudiante_pos">Estudiante (Postgrado)</option>
+							<option value="estudiante_pre">Estudiante (Pregrado)</option>
+							<option value="funcionario">Funcionario</option>
+						</select>
+					</div>
+								
+				</div>
+			</section>
+
+			<section>
+				<h2>Información de Contacto</h2>
+
+				<div class="form-row">
+					<div class="form-object flex-col-75">
+						<label for="correo" class="required">Correo</label>
+						<input type="text" name="correo" placeholder="persona@correo.com" class="input" required id="correo">
+					</div>
+
+					<div class="form-object flex-col-25">
+						<label for="telefono">Teléfono</label>
+						<input type="tel" class="input" placeholder="+569 1234 5678" name="telefono" id="telefono">
+					</div>
+				</div>
+			</section>
+
+
+			<div class="form-row">
+				<input type="submit" value="¡Confirmar Datos!">				
+			</div>
+
+			<div class="form-row">
+				<label class="required">Información Requerida</label>
+
+			</div>
+
+
+
+		</div>
+		
+	</form>
+	
+
+
+	<script src="static/scripts/formValidators/validateRut.js"></script>
+	<script src="static/scripts/formValidators/handleRequirements.js"></script>
+	<script src="static/scripts/formValidators/validateMail.js"></script>
+{%endblock%}

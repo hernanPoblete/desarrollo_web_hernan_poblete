@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, request
+from flask import Flask, url_for, render_template, request, redirect
 import pathlib
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
@@ -25,7 +25,7 @@ foto=db.Table('foto', db.metadata, autoload_with=db.engine)
 
 @app.route("/", methods=["GET"])
 def index():
-	return render_template("dashboard.html")
+	return render_template("index.html")
 
 
 
@@ -33,6 +33,9 @@ def index():
 def register():
 	if request.method == "GET":
 		return render_template("register.html")
+	elif request.method == "POST":
+		print(request.form)
+		return redirect('/members')
 	
 
 @app.route("/members", methods=["GET"])
