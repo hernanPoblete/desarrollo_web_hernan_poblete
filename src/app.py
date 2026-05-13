@@ -29,17 +29,25 @@ def fetch_latest_members(n, offset=0):
 	return db.session.query(miembro).order_by('fecha_registro').offset(offset).limit(n)
 
 def register_member(data):
-	id = data.rut.replace('.', '').replace('-', '')
+	print(data.get('rut'))
+	id = data.get('rut').replace('.', '').replace('-', '')
 
-	db.session.add(
-		miembro(
-			nombre=data.nombre,
+
+	db.session.execute(
+		miembro.insert().values(
+			nombre=data.get('nombre'),
 			id=id,
-			email=data.correo,
-			telefono=data.telefono
+			email=data.get('correo'),
+			telefono=data.get('telefono'),
+			comuna_id=data.get('comuna'),
+			fecha_registro=datetime.now()
 		)
 	)
-	print(data)
+
+	db.session.commit()
+
+
+	
 
 
 @app.route("/", methods=["GET"])
