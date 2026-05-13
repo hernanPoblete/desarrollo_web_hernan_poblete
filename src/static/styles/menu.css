@@ -1,0 +1,12 @@
+main{
+	border: solid black 2px;
+
+}
+
+main>*{
+	margin: 10px;
+}
+
+main>ul>li :hover{
+	color:blue
+}

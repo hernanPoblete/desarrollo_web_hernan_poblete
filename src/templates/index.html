@@ -1,15 +1,22 @@
 {% extends "layout/template.html" %}
 
 {% block title %}
-	Formulario de Actividades Extracurriculares
+	Menú
 {% endblock %}
 
 {%block headinfo%}
 	{{super()}}
-	<link rel="stylesheet" href="static/styles/mainForm.css">
+	<link rel="stylesheet" href="static/styles/menu.css">
 {%endblock%}
 
 
 {%block body%}
-
+	<main class = "centered">
+		<h1>Catastro de Actividades FCFM</h1>
+		<ul>
+			<li><a href="/register">Registrar Miembro y Actividades</a></li>
+			<li><a href="/members">Ver miembros</a></li>
+			<li><a href="#">Estadísticas</a></li>
+		</ul>
+	</main>
 {%endblock%}
