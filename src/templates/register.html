@@ -41,6 +41,17 @@
 					</div>
 								
 				</div>
+
+				<div class="form-row">
+					<div class="form-object flex-col-50">
+						<label for="comuna" class="required">Comuna</label>
+						<select name="comuna" id="comuna" required class="input", id="comuna">
+							{% for i in comunas %}
+								<option value="{{i['id']}}">{{i['nombre']}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
 			</section>
 
 			<section>
