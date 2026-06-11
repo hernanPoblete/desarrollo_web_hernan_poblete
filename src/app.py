@@ -1,31 +1,20 @@
 from flask import Flask, url_for, render_template, request, redirect, jsonify
-import pathlib
-from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
 from math import ceil
 
-if pathlib.Path('.env').exists:
-	load_dotenv('.env')
-elif pathlib.Path('.example.env').exists():
-	load_dotenv('.example.env')
-else:
-	raise NameError("Environment variables not found")
+from db import __prepare_db__
+from inject_dotenv import __inject_dotenv__
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"]=os.environ["DB_URI"]
 
-db = SQLAlchemy(app)
-app.app_context().push()
+__inject_dotenv__()
+__prepare_db__(app)
 
-region=db.Table('region', db.metadata, autoload_with=db.engine)
-comuna=db.Table('comuna', db.metadata, autoload_with=db.engine)
-miembro=db.Table('miembro', db.metadata, autoload_with=db.engine)
-actividad=db.Table('actividad', db.metadata, autoload_with=db.engine)
-foto=db.Table('foto', db.metadata, autoload_with=db.engine)
-
+from db import miembro, db
 def fetch_latest_members(n, offset=0):
+	print(db)
 	return db.session.query(miembro).order_by('fecha_registro').offset(offset).limit(n)
 
 def members_length():
