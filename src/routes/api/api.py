@@ -12,4 +12,12 @@ def test():
 
 @api.route('cities_by_region/<int:region>')
 def cities_by_region(region):
-    return list(map(lambda x: {'id': x[0], 'comuna': x[1]},db.session.query(comuna).where(comuna.c.region_id==region).all()))
+
+    r = list(map(
+        lambda x: {'id': x[0], 'comuna': x[1]},
+        db.session.query(comuna)
+        .where(comuna.c.region_id==region)
+        .order_by(comuna.c.nombre)
+        .all()))
+
+    return r

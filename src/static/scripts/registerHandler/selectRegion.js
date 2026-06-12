@@ -5,6 +5,11 @@ let deletedFirstElement = false;
 
 let ciudadData = new Array(16);
 
+
+/*
+Busca las ciudades dado un id de región. Si ya se buscó previamente 
+(y la búsqueda fue buena), se almacena de forma local
+*/
 async function fetchCities(region_id){
     if (ciudadData[region_id]) return ciudadData[region_id];
     let list;
@@ -19,6 +24,9 @@ async function fetchCities(region_id){
     return list
 }
 
+/*
+Elimina la opcion "seleccionar region al momento de elegir una region"
+*/
 function deleteDefault(){
         if (!deletedFirstElement){
         selectRegion.removeChild(selectRegion.children[0])
@@ -27,7 +35,48 @@ function deleteDefault(){
 }
 
 
+/*
+Reinicia el select de comunas
+*/
+function resetCities(){
+    selectComuna.value="";
 
-selectRegion.oninput = (ev)=>{
-    fetchCities(selectRegion.value).then(console.log)
+    for (let child of selectComuna.children){
+        selectComuna.removeChild(child)
+    }
+
+    selectComuna.setAttribute('disabled','');
+}
+
+/*
+Cambia las opciones de comuna disponibles en el formulario de inscripción
+*/
+async function toggleCities() {
+    resetCities();
+
+    let cities = await fetchCities(parseInt(selectRegion.value));
+    deleteDefault()
+
+    
+    for (let city of cities){
+        let city_node = document.createElement('option')
+        city_node.value = city.id;
+        city_node.innerText = city.comuna;
+
+        selectComuna.append(city_node);
+    }
+
+    if (cities.length>0){
+        selectComuna.removeAttribute('disabled');
+    }
+}
+
+
+selectRegion.oninput = toggleCities;
+
+//Recarga automatica de comunas
+window.onload=(ev)=>{
+    if(selectRegion.value){
+        toggleCities()
+    }
 }
