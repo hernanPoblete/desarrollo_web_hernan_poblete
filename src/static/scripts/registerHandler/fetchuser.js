@@ -7,7 +7,7 @@ let nameSpan = document.getElementById("uname");
 let timeout;
 
 
-idInput.oninput = ()=>{
+idInput.addEventListener('input', ()=>{
     nameSpan.innerText = "";
 
     clearTimeout(timeout);
@@ -27,4 +27,4 @@ idInput.oninput = ()=>{
             
         }).catch(e=> nameSpan.innerText = "¡Ocurrio un error al comunicar con la base de datos!")
     }, 2000);
-}
+})

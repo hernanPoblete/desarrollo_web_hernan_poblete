@@ -63,12 +63,13 @@ idElement.onkeypress = (e)=>{
 }
 
 
-idElement.oninput = (e)=>{
+idElement.addEventListener('input', (e)=>{
 	numberInput = idElement.value.replace(/[^0-9k]/g, '');
-
+	idElement.classList.remove('err')
+	
 	if(!validateDV()){
-		console.log(idElement.classList.add("err"));
-	}	
+		idElement.classList.add("err");
+	}
 
 	formatRut();		
-}
+})
