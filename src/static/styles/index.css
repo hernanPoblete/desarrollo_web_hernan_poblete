@@ -70,3 +70,7 @@ label.required::after{
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.error{
+	color:red;
+}

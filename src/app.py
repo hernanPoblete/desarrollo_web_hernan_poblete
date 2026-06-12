@@ -19,29 +19,18 @@ def fetch_latest_members(n, offset=0):
 def members_length():
 	return db.session.query(miembro).count()
 
-def register_member(data):
-	print(data.get('rut'))
-	id = data.get('rut').replace('.', '').replace('-', '')
 
-
-	db.session.execute(
-		miembro.insert().values(
-			nombre=data.get('nombre'),
-			id=id,
-			email=data.get('correo'),
-			telefono=data.get('telefono'),
-			comuna_id=data.get('comuna'),
-			fecha_registro=datetime.now()
-		)
-	)
-
-	db.session.commit()
 
 from routes.register.register import register_bp
 from routes.api.api import api as api_bp
 
+
 app.register_blueprint(register_bp)
 app.register_blueprint(api_bp)
+
+if bool(os.environ["TEST"]):
+	from routes.dev import test_BP
+	app.register_blueprint(test_BP, url_prefix="/dev")
 
 @app.route("/", methods=["GET"])
 def index():
