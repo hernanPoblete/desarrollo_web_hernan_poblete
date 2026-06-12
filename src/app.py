@@ -14,7 +14,6 @@ __prepare_db__(app)
 
 from utils.db import miembro, db
 def fetch_latest_members(n, offset=0):
-	print(db)
 	return db.session.query(miembro).order_by('fecha_registro').offset(offset).limit(n)
 
 def members_length():
@@ -39,8 +38,10 @@ def register_member(data):
 	db.session.commit()
 
 from routes.register.register import register_bp
-app.register_blueprint(register_bp)
+from routes.api.api import api as api_bp
 
+app.register_blueprint(register_bp)
+app.register_blueprint(api_bp)
 
 @app.route("/", methods=["GET"])
 def index():
