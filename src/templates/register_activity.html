@@ -1,0 +1,57 @@
+{% extends "layout/template.html" %}
+
+{% block title %}
+	Registrar Activdad
+{% endblock %}
+
+{%block headinfo%}
+	{{super()}}
+	<link rel="stylesheet" href="/static/styles/mainForm.css">
+    <link rel="stylesheet" href="/static/styles/registerActivity.css">
+{%endblock%}
+
+
+{%block body%}
+
+<form action="/register/activity" method="post"  id="mainForm">
+
+    <h1 class="form-title">Formulario de Actividades de Distención en la Facultad</h1>
+
+    <div class="form-content">
+        <section>
+            <h2>Registro de Actividades</h2>
+
+            <div class="form-row">
+                <div class="form-object flex-col-25">
+                    <label for="rut" class="required">Rut</label>
+                    <input type="text" class="input" name="rut" id="rut">
+                </div>
+
+
+                <div class="flex-col-75 form-object">
+                    <span id="uname"></span>
+                </div>
+                
+            </div>
+        </section>
+
+        <div class="form-row">
+            <input type="submit" value="¡Confirmar Datos!">				
+        </div>
+
+        <div class="form-row">
+            <label class="required">Información Requerida</label>
+
+        </div>
+
+        {%if error_msg%}
+        <div class="form-row">
+            <span class="error">{{error_msg}}</span>
+        </div>
+        {%endif%}
+    </div>
+</form>
+
+
+<script src="/static/scripts/registerHandler/fetchuser.js"></script>
+{%endblock%}

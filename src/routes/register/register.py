@@ -47,4 +47,4 @@ def register_member_route():
 @register_bp.route("/activity", methods = ["GET", "POST"])
 def register_activity_route():
 
-	return "OK"
+	return render_template("register_activity.html")
