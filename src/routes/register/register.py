@@ -43,3 +43,8 @@ def register_member_route():
 		return redirect('/members')
 
 
+
+@register_bp.route("/activity", methods = ["GET", "POST"])
+def register_activity_route():
+
+	return "OK"
