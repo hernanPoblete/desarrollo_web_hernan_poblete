@@ -6,12 +6,12 @@
 
 {%block headinfo%}
 	{{super()}}
-	<link rel="stylesheet" href="static/styles/mainForm.css">
+	<link rel="stylesheet" href="/static/styles/mainForm.css">
 {%endblock%}
 
 
 {%block body%}
-<form action="/register" method="post" id="mainForm">
+<form action="/register/member" method="post" id="mainForm">
 		<h1 class="form-title">Formulario de Actividades de Distención en la Facultad</h1>
 		
 		<div class="form-content">
@@ -43,6 +43,16 @@
 				</div>
 
 				<div class="form-row">
+
+					<div class="form-object flex-col-50">
+						<label for="Región" class="required">Región</label>
+						<select class="input" name="region" id="region" required>
+							<option value="">Seleccionar Región...</option>
+							{%for i in regiones%}
+								<option value="{{i['id']}}">{{i['nombre']}}</option>
+							{%endfor%}
+						</select>
+					</div>
 					<div class="form-object flex-col-50">
 						<label for="comuna" class="required">Comuna</label>
 						<select name="comuna" id="comuna" required class="input", id="comuna">

@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 from math import ceil
 
-from db import __prepare_db__
+from utils.db import __prepare_db__
 from inject_dotenv import __inject_dotenv__
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ app = Flask(__name__)
 __inject_dotenv__()
 __prepare_db__(app)
 
-from db import miembro, db
+from utils.db import miembro, db
 def fetch_latest_members(n, offset=0):
 	print(db)
 	return db.session.query(miembro).order_by('fecha_registro').offset(offset).limit(n)
@@ -38,22 +38,14 @@ def register_member(data):
 
 	db.session.commit()
 
-
-	
+from routes.register.register import register_bp
+app.register_blueprint(register_bp)
 
 
 @app.route("/", methods=["GET"])
 def index():
 	return render_template("index.html", members= fetch_latest_members(5))
 
-
-@app.route("/register", methods = ["GET", "POST"])
-def register():
-	if request.method == "GET":
-		return render_template("register.html", comunas = db.session.query(comuna).all())
-	elif request.method == "POST":
-		register_member(request.form)
-		return redirect('/members')
 	
 
 @app.route("/members/<int:page>", methods=["GET"])
