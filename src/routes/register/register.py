@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, make_response
-from utils.db import db, comuna, region, miembro, actividad
+from utils.db import db, comuna, region, miembro, actividad, foto
 from datetime import datetime
 from .validators import validate_member, ValidationError
 import os
@@ -71,10 +71,19 @@ def register_activity_route():
 		folder = result.inserted_primary_key[0]
 		nombre_carpeta = 'src/static/uploads/'+str(folder)
 		os.makedirs(nombre_carpeta, exist_ok=True)
+
 		for file in request.files.getlist('fotos'):
+			ruta = nombre_carpeta+'/'+file.filename
+			file.save(ruta)
 
-			file.save(nombre_carpeta+'/'+file.filename)
+			foto.insert().values(
+				ruta_archivo = ruta,
+				nombe_archivo=file.filename,
+				actividad_id=folder
+			)
 
+
+		db.session.commit()
 
 		
 
