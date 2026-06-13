@@ -17,7 +17,7 @@ def register_member(data):
 			email=data.get('correo'),
 			telefono=data.get('telefono'),
 			comuna_id=data.get('comuna'),
-			fecha_registro=datetime.now()
+			fecha_registro=datetime.today()
 		)
 	)
 
@@ -35,8 +35,6 @@ def register_member_route():
 		try:
 			validate_member(request.form)
 			register_member(request.form)
-
-			return redirect("/members")
 		except ValidationError as e:
 			return make_response(render_template("register.html", regiones = qreg, error_msg=e.reason), e.status)
 

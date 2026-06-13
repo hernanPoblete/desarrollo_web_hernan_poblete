@@ -1,6 +1,7 @@
 from flask import Blueprint
 from utils.db import *
 from utils.validation import validate_numeric_str, calc_dv
+from sqlalchemy import text
 
 api = Blueprint('api',__name__, url_prefix='/api')
 
@@ -44,3 +45,31 @@ def user_by_id(id):
 
 
     return [r[0][1]]
+
+@api.route('members_by_day')
+def members_by_day():
+    query= db.session.execute(
+        text("SELECT fecha_registro,COUNT(*) FROM miembro GROUP BY (miembro.fecha_registro) ORDER BY fecha_registro;")   
+    )
+
+    
+    return list(map(lambda x: {'date': str(x[0].year) + '-' + str(x[0].month) + '-' + str(x[0].day) , 'count': x[1]}, 
+    list(query.fetchall())))
+
+
+@api.route('activities_per_city')
+def activities_per_city():
+    query=db.session.execute(
+        text("SELECT c.nombre, count(*) FROM actividad JOIN miembro on miembro.id=actividad.miembro_id JOIN comuna c on miembro.comuna_id=c.id group by c.nombre;")
+    )
+
+    return list(map(lambda x: {"comuna": x[0], "count": x[1]}, query.fetchall()))
+
+@api.route('activities_per_type')
+def activities_per_type():
+    query = db.session.execute(
+        text("SELECT tipo, COUNT(*) FROM actividad group by actividad.tipo ;")
+    )
+
+
+    return list(map(lambda x: {"tipo": x[0], "count": x[1]}, query.fetchall()))
