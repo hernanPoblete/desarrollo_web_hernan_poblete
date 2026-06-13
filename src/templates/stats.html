@@ -1,0 +1,31 @@
+{% extends "layout/template.html" %}
+
+{% block title %}
+	Estadisticas
+{% endblock %}
+
+{%block headinfo%}
+	{{super()}}
+
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+{%endblock%}
+
+
+
+{%block body%}
+
+<h1>Estadísticas</h1>
+
+<h2> Miembros por día</h2>
+<div class="graph" id="membersPerDay"></div>
+
+<h2>Actividades por comuna</h2>
+<div class="graph" id="activitiesPerCity"></div>
+
+<h2>Actividades por tipo</h2>
+<div class="graph" id="activitiesPerType"></div>
+
+
+<script src="/static/scripts/graphs/graphStats.js"></script>
+{%endblock%}

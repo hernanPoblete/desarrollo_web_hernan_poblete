@@ -48,12 +48,9 @@ def members(page):
 	
 	return render_template("dashboard.html", members = fetch_latest_members(users_per_page, (page-1)*users_per_page), page=page, max_page=pages)
 
-
-@app.route("/api/user", methods=["GET", "POST"])
-def fetch_user():
-	return jsonify({
-		"foo": "bar"
-	})
+@app.route("/stats")
+def stats():
+	return render_template("stats.html")
 if __name__ == '__main__':
 
 	
