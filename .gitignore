@@ -6,3 +6,5 @@
 !**/**.example.env
 
 .vscode
+
+src/static/uploads/
