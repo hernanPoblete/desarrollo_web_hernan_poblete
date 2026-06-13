@@ -64,3 +64,8 @@ form#mainForm > .form-content .form-row > .form-object > .input {
 input.err {
 	border: solid red 1px;
 }
+
+
+textarea.input{
+	min-height: 5em;
+}

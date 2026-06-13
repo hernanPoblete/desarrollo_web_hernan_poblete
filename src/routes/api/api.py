@@ -1,6 +1,6 @@
 from flask import Blueprint
 from utils.db import *
-from utils.validation import validate_numeric_str
+from utils.validation import validate_numeric_str, calc_dv
 
 api = Blueprint('api',__name__, url_prefix='/api')
 
@@ -28,12 +28,16 @@ def cities_by_region(region):
 def user_by_id(id):
     parsed_id=id.replace('.', '').replace('-', '')
 
-    print(parsed_id[:-1])
-
     if not validate_numeric_str(parsed_id):
         return [""]
 
-    r = db.session.query(miembro).where(miembro.c.id == int(parsed_id[:-1])).all()
+    numeric_id = int(parsed_id[:-1])
+    dv = int(parsed_id[-1])
+
+    if dv != calc_dv(numeric_id):
+        return [""]
+
+    r = db.session.query(miembro).where(miembro.c.id == numeric_id).all()
 
     if len(r) == 0:
         return [""]

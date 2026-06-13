@@ -22,17 +22,78 @@
             <h2>Registro de Actividades</h2>
 
             <div class="form-row">
+                <div class="flex-col-100 form-object">
+                    <label for="nombre" class="required">Nombre de la Actividad</label>
+                    <input type="text" name="nombre" id="nombre" class="input" placeholder="Actividad Mega Genial">
+
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-object flex-col-25">
+                    <label class="required" for="tipo_actividad">Tipo de Actividad</label>
+                    <select name="tipo_actividad" id="tipo_actividad" class="input">
+                        <option value="arte">Artística</option>
+                        <option value="deporte">Deportiva</option>
+                        <option value="tecnología">Tecnológica</option>
+                        <option value="social">Social</option>
+                        <option value="recreación">Recreativa</option>
+                        <option value="otra">Otra</option>
+                    </select>
+                </div>
+
                 <div class="form-object flex-col-25">
                     <label for="rut" class="required">Rut</label>
                     <input type="text" class="input" name="rut" id="rut">
                 </div>
 
 
-                <div class="flex-col-75 form-object">
+                <div class="flex-col-50 form-object">
                     <span id="uname"></span>
                 </div>
                 
             </div>
+
+            <div class="form-row">
+                <div class="form-object flex-col-25">
+                    <label for="horario" class="required">Horario de Actividad</label>
+                    <select name="horario" id="horario" class="input">
+                        <option value="lunes">Lunes</option>
+                        <option value="martes">Martes</option>
+                        <option value="miércoles">Miércoles</option>
+                        <option value="jueves">Jueves</option>
+                        <option value="viernes">Viernes</option>
+                        <option value="sábado">Sabado</option>
+                        <option value="domingo">Domingo</option>
+                    </select>
+                </div>
+
+
+                <div class="form-object flex-col-25">
+                    <label for="horaInicio" class="required">Hora de Inicio</label>
+                    <input type="time" name="horaInicio" id="horaInicio" class="input">
+                </div> 
+                
+                <div class="form-object flex-col-25">
+                    <label for="duracion" class="required">Duración de Actividad</label>
+                    <input type="text" name="duracion" id="duracion" class="input" placeholder="xxxxx (minutos)">
+                </div>  
+                
+                <div class="form-object flex-col-25">
+                    <label for="fotos" class="required">Fotos de la Actividad</label>
+                    <input type="file" name="fotos" id="fotos" class="input" accept="image/*" multiple>
+                </div>                 
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-object flex-col-100">
+                    <label for="descripcion" class="required">Descripción</label>
+                    <textarea class="input" name="descripcion" id="descripcion" placeholder="Cuentanos de tu actividad"></textarea>                    
+                </div>
+
+            </div>
+
         </section>
 
         <div class="form-row">
