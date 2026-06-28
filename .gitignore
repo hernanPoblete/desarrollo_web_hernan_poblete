@@ -8,3 +8,6 @@
 .vscode
 
 src/static/uploads/
+
+**/**.class
+target
