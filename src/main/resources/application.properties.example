@@ -1,0 +1,6 @@
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/tarea2
+spring.datasource.username=cc5002
+spring.datasource.password=programacionweb
+
+spring.jpa.show-sql=true
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
