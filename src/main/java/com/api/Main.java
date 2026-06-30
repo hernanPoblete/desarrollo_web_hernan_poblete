@@ -18,14 +18,6 @@ public class Main {
         SpringApplication.run(Main.class, args);  
     }
 
-    @Bean
-    CommandLineRunner commandLineRunner(RegionRepo repo){
-        System.out.println("\n\n\n\nXDDDDDDD\n\n\n\n");
-
-        return args -> {
-            repo.getReferenceById(11);
-        };
-    }
 
 
     @GetMapping("/")
