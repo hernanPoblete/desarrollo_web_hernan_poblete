@@ -11,6 +11,7 @@ public class Actividad {
     @Column(name = "id")
     private Integer id;
 
+    @Column(name="miembro_id")
     private Integer miembro_id;
     
     @Column(name="dia")
@@ -31,12 +32,16 @@ public class Actividad {
     @Column(name="descripcion")
     private String descripcion;
 
-    
+
     public Actividad(){}
 
 
     public String getNombre(){
         return nombre;
+    }
+
+    public Integer getId(){
+        return id;
     }
 
 
