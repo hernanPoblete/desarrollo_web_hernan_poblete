@@ -30,9 +30,4 @@ public class Region {
         return nombre;
     }
 
-    public String toString(){
-        String format = "{\"id\":%d, \"nombre\":\"%s\"}";
-
-        return String.format(format, getID(), getName());
-    }
 }

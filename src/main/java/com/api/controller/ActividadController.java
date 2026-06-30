@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.api.model.Actividad;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 
 @RestController
@@ -24,5 +27,11 @@ public class ActividadController {
     public Actividad getActividadById( @PathVariable Integer id) {
         return repo.getReferenceById(id);
     }
+
+    @GetMapping("/actividad/getByPattern/{pattern}")
+    public List<Actividad> getActividadesByPattern( @PathVariable String pattern){
+        return repo.findByNombreContaining(pattern);
+    }
+    
     
 }

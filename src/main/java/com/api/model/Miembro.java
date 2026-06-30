@@ -4,7 +4,10 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name = "miembro")
 public class Miembro {
@@ -27,8 +30,9 @@ public class Miembro {
     @Column(name = "fecha_registro")
     private LocalDate fecha_registro;
     
-    @Column(name = "comuna_id")
-    private Integer comuna_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comuna_id")
+    private Comuna comuna;
     
     public Miembro(){}
 
@@ -38,5 +42,9 @@ public class Miembro {
 
     public String getEmail() {
         return email;
+    }
+
+    public Comuna getComuna() {
+        return comuna;
     }
 }

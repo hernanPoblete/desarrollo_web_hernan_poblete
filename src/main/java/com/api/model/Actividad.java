@@ -52,4 +52,16 @@ public class Actividad {
         return miembro;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+    public String getDia() {
+        return dia;
+    }
+    public String getHora_inicio() {
+        return hora_inicio;
+    }
+    public String getTipo() {
+        return tipo;
+    }
 }
