@@ -1,5 +1,7 @@
 package com.api.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,7 +25,7 @@ public class Miembro {
 
 
     @Column(name = "fecha_registro")
-    private Date fecha_registro;
+    private LocalDate fecha_registro;
     
     @Column(name = "comuna_id")
     private Integer comuna_id;

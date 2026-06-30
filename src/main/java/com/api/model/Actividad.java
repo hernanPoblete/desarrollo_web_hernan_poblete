@@ -2,7 +2,10 @@ package com.api.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name="actividad")
 public class Actividad {
@@ -11,8 +14,9 @@ public class Actividad {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name="miembro_id")
-    private Integer miembro_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "miembro_id")
+    private Miembro miembro;
     
     @Column(name="dia")
     private String dia;
@@ -44,5 +48,8 @@ public class Actividad {
         return id;
     }
 
+    public Miembro getMiembro() {
+        return miembro;
+    }
 
 }
