@@ -1,11 +1,16 @@
 package com.api.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity(name="actividad")
 public class Actividad {
@@ -36,6 +41,8 @@ public class Actividad {
     @Column(name="descripcion")
     private String descripcion;
 
+    @OneToMany(mappedBy = "actividad", cascade = CascadeType.REFRESH, orphanRemoval = true)
+    private List<Nota> notas;
 
     public Actividad(){}
 
@@ -63,5 +70,12 @@ public class Actividad {
     }
     public String getTipo() {
         return tipo;
+    }
+
+    public Double getNotaAvg(){
+        System.out.println("AAAAAAAAAAAAAAAAAAA");
+        System.out.println(notas);
+        System.out.println("BBBBBBBBBBBBBBBBBBB");
+        return notas.stream().mapToDouble(x->x.getNota()).average().orElse(0.0);
     }
 }
