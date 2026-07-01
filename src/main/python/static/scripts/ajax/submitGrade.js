@@ -3,10 +3,21 @@ let inp = document.getElementById("nota_eval");
 
 form.onsubmit = (e)=>{
 
-    let val = parseInt(inp.innerText);
+    let val = parseInt(inp.value);
 
     if (1<=val<=7){
-        //Armar acá logica de insercion de nota
+        fetch("http://localhost:8080/actividad/agregarNota",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "idActividad": parseInt(params.get("id")),
+                "nota": val 
+            })
+        }).then(async res =>{
+            window.location.reload();
+        })
     }
 
 
