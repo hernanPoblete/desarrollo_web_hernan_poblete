@@ -73,9 +73,6 @@ public class Actividad {
     }
 
     public Double getNotaAvg(){
-        System.out.println("AAAAAAAAAAAAAAAAAAA");
-        System.out.println(notas);
-        System.out.println("BBBBBBBBBBBBBBBBBBB");
         return notas.stream().mapToDouble(x->x.getNota()).average().orElse(0.0);
     }
 }
