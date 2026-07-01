@@ -67,7 +67,7 @@ def register_activity_route():
 		result = db.session.execute(stmt)
 
 		folder = result.inserted_primary_key[0]
-		nombre_carpeta = 'src/static/uploads/'+str(folder)
+		nombre_carpeta = 'src/main/python/static/uploads/'+str(folder)
 		os.makedirs(nombre_carpeta, exist_ok=True)
 
 		for file in request.files.getlist('fotos'):

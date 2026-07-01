@@ -28,6 +28,9 @@ from routes.api.api import api as api_bp
 app.register_blueprint(register_bp)
 app.register_blueprint(api_bp)
 
+from routes.activities.activities import activities_bp
+app.register_blueprint(activities_bp)
+
 if bool(os.environ["TEST"]):
 	from routes.dev import test_BP
 	app.register_blueprint(test_BP, url_prefix="/dev")

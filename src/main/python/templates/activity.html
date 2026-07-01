@@ -1,0 +1,31 @@
+{% extends "layout/template.html" %}
+
+{% block title %}
+	Menú
+{% endblock %}
+
+{%block headinfo%}
+	{{super()}}
+{%endblock%}
+
+{%block body%}
+
+<main>
+    <h1 id="nombreActividad">Cargando...</h1>
+    <h2>Descripción</h2>
+    <p id="descripcion"></p>
+
+    <h2>Evaluacion</h2>
+    <p id="nota"></p>
+
+    <h3>Evaluar</h3>
+    <form action="" id="grade">
+        <input type="text" name="nota_eval" id="nota_eval" placeholder="Nota entera entre 1 y 7">
+        <button>Subir nota</button>
+    </form>
+</main>
+
+
+<script src="/static/scripts/ajax/fetchUser.js"></script>
+<script src="/static/scripts/ajax/submitGrade.js"></script>
+{%endblock%}

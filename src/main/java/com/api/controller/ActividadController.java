@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.model.ActividadRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.api.model.Actividad;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "127.0.0.1:5000")
 @RestController
 public class ActividadController {
     
